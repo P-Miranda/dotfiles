@@ -1,0 +1,69 @@
+""""""""""""""""""""""""""""""""""
+" General
+""""""""""""""""""""""""""""""""""
+" Appearance
+syntax on " highlight syntax
+set number " show line numbers
+set showcmd " Show partial command on bottom-right
+set wrap " Wrap long text lines
+set cursorline " highlight current line
+set showmatch " highlight matching {[()]}
+set scrolloff=10 "always show X lines above and below cursor line
+set splitright "open new vertical splits on the right
+set splitbelow "open new horizontal splits below
+set colorcolumn=80 " color column on 80th column
+highlight ColorColumn ctermbg=0 guibg=lightgrey
+
+" search
+set nohlsearch " no highlighting after search
+set ignorecase " ignore case in search
+set incsearch " show search results as you type
+
+" tabs and spaces
+set tabstop=4 "tab characters appear 4-spaces-wide
+set shiftwidth=4 "identation width measured in spaces
+set noexpandtab "expandtab: tabs are replaced by spaces*
+set autoindent "Copy ident from current line when starting a new one
+
+" temp files
+set backupdir=~/.vim/tmp// " file copy before vim edition
+set directory=~/.vim/tmp// " unsaved changes
+set undodir=~/.vim/tmp//   " undo tree of edited files
+""""""""""""""""""""""""""""""""""
+" Plugins managed by Vundle [git@github.com:VundleVim/Vundle.vim.git]
+""""""""""""""""""""""""""""""""""
+set nocompatible
+filetype off
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" Vundle manages itself, required
+Plugin 'VundleVim/Vundle.vim'
+
+" My custom plugins
+Plugin 'morhetz/gruvbox' " color scheme
+" add more plugins here
+
+call vundle#end()
+filetype plugin indent on
+
+""""""""""""""""""""""""""""""""""
+" Theme gruvbox [github.com:morhetz/gruvbox.git]
+""""""""""""""""""""""""""""""""""
+autocmd vimenter * nested colorscheme gruvbox
+set background=dark " Setting dark mode
+""""""""""""""""""""""""""""""""""
+" Custom Mappings
+""""""""""""""""""""""""""""""""""
+" Press ii to exit insert mode -> normal mode
+inoremap ii <ESC>
+" Press ii to exit visual mode -> normal mode
+vnoremap ii <ESC>
+" Press ii to exit command mode -> normal mode
+cnoremap ii <ESC>
+""""""""""""""""""""""""""""""""""
+" Filetype Syntax Highlighting
+""""""""""""""""""""""""""""""""""
+augroup filetypedetect
+	au! BufRead,BufNewFile *.m,*.oct set filetype=octave
+augroup END
