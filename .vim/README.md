@@ -7,6 +7,9 @@ Current contents:
 - bundle/Vundle.vim: submodule with the Vundle Plugin manager
 - tmp/: temporary file storage (folder contents ignored)
 
+# Add Vundle Plugin Manager
+1. Add Vundle submodule: `git submodule add git@github.com:VundleVim/Vundle.vim .vim/bundle/Vundle.vim`
+
 # Setup
 1. Go to your home folder: `cd ~` or `cd /home/$(USER)`
 2. Clone the repository: `git clone git@github.com:P-Miranda/.vim.git`

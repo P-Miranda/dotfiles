@@ -25,3 +25,7 @@ xargs -I{} mv {} .config-backup/{}
 6. Re-run the checkout command:`dotfiles_config checkout`
 7. Ignore untracked files by default: `dotfiles_config config --local status.showUntrackedFiles no`
 8. Use the bare repository as a normal git repo with the `dotfiles_config` alias
+
+# Vim Setup
+1. Initialize submodules: `dotfiles_config submodule update --init --recursive`
+2. Install Vundle Plugins: `vim´+PluginInstall +qall`
