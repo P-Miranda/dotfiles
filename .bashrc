@@ -8,6 +8,11 @@ case $- in
       *) return;;
 esac
 
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+	source /etc/bashrc
+fi
+
 ################################################################################
 # Command History
 ################################################################################
@@ -43,6 +48,9 @@ shopt -s checkwinsize
 ################################################################################
 # Prompt
 ################################################################################
+
+# Fix terminal color, specially for vim
+export TERM="xterm-256color"
 
 # set variable identifying the chroot you work in (used in the prompt below)
 if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
@@ -136,6 +144,7 @@ alias dotfiles_config='/usr/bin/git --git-dir=/home/pmiranda/.dotfiles --work-tr
 ################################################################################
 # Environment Variables
 ################################################################################
+
 
 # enable GUI access to Ubuntu - for WLS2
 # source: https://medium.com/@japheth.yates/the-complete-wsl2-gui-setup-2582828f4577
