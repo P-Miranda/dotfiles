@@ -113,9 +113,6 @@ fi
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
 # enable color support of ls and also add handy aliases
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
 
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
@@ -144,3 +141,12 @@ alias dotfiles_config='/usr/bin/git --git-dir=/home/pmiranda/.dotfiles --work-tr
 # source: https://medium.com/@japheth.yates/the-complete-wsl2-gui-setup-2582828f4577
 export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0
 export LIBGL_ALWAYS_INDIRECT=1
+
+################################################################################
+# Local Bash Configurations (not synchronized to dotfiles)
+################################################################################
+
+# source the .bash_local file if exists
+if [ -f $HOME/.bash_local ]; then
+	source $HOME/.bash_local
+fi
