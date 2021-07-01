@@ -148,8 +148,8 @@ alias dotfiles_config='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 
 # enable GUI access to Ubuntu - for WLS2
 # source: https://medium.com/@japheth.yates/the-complete-wsl2-gui-setup-2582828f4577
-export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0
-export LIBGL_ALWAYS_INDIRECT=1
+#export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0
+#export LIBGL_ALWAYS_INDIRECT=1
 
 ################################################################################
 # Local Bash Configurations (not synchronized to dotfiles)
