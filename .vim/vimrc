@@ -13,6 +13,24 @@ set splitright "open new vertical splits on the right
 set splitbelow "open new horizontal splits below
 set colorcolumn=80 " color column on 80th column
 highlight ColorColumn ctermbg=0 guibg=lightgrey
+set breakindent " wrapped lines keep same indentation
+
+" status line
+set statusline=
+set statusline+=%f " relative filepath from current working directory
+set statusline+=%m%r%w " modified, readonly, preview flags
+set statusline+=%= " align items to the right after this point
+set statusline+=[%{&ff}]%y " current filetype and syntax
+set statusline+=[%p%%/%LL][%l,%c] " lines %, total lines, current line and col
+set laststatus=2 " always show status bar
+
+" command completion
+set wildmenu " show vim command completion options
+set wildmode=longest:full,full " choose longest matching option first
+set wildignorecase " ignore cases when matching commands
+" tell vim you never want to edit these files
+set wildignore+=*.~,*.swp
+set wildignore+=*.pyc,*.o,*.a,*.so
 
 " search
 set nohlsearch " no highlighting after search
