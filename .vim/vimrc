@@ -60,8 +60,8 @@ Plugin 'VundleVim/Vundle.vim'
 
 " My custom plugins
 Plugin 'morhetz/gruvbox' " color scheme
+Plugin 'tpope/vim-commentary' " Command to toggle comments <gc>
 " add more plugins here
-
 call vundle#end()
 filetype plugin indent on
 

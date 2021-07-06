@@ -36,3 +36,4 @@ xargs -I{} mv {} .config-backup/{}
 # Vim Setup
 1. Initialize submodules: `dotfiles_config submodule update --init --recursive`
 2. Install Vundle Plugins: `vim´+PluginInstall +qall`
+3. Check '.vim/README.md' for more details
