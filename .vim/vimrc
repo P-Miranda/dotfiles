@@ -71,6 +71,9 @@ filetype plugin indent on
 autocmd vimenter * nested colorscheme gruvbox
 set background=dark " Setting dark mode
 """"""""""""""""""""""""""""""""""
+" Custom Comments for Filetypes
+""""""""""""""""""""""""""""""""""
+autocmd Filetype octave setlocal commentstring=%\ %s
 " Custom Mappings
 """"""""""""""""""""""""""""""""""
 " Press ii to exit insert mode -> normal mode
