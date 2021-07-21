@@ -1,4 +1,27 @@
 """"""""""""""""""""""""""""""""""
+" Plugins managed by Vundle [git@github.com:VundleVim/Vundle.vim.git]
+""""""""""""""""""""""""""""""""""
+set nocompatible
+filetype off
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" Vundle manages itself, required
+Plugin 'VundleVim/Vundle.vim'
+
+" My custom plugins
+Plugin 'morhetz/gruvbox' " color scheme
+Plugin 'tpope/vim-commentary' " Command to toggle comments <gc>
+" add more plugins here
+call vundle#end()
+filetype plugin indent on
+
+""""""""""""""""""""""""""""""""""
+" Theme gruvbox [github.com:morhetz/gruvbox.git]
+""""""""""""""""""""""""""""""""""
+autocmd vimenter * nested colorscheme gruvbox
+set background=dark " Setting dark mode
+""""""""""""""""""""""""""""""""""
 " General
 """"""""""""""""""""""""""""""""""
 " Appearance
@@ -38,38 +61,23 @@ set ignorecase " ignore case in search
 set incsearch " show search results as you type
 
 " tabs and spaces
-set tabstop=4 "tab characters appear 4-spaces-wide
+" default configuration
+set tabstop=4 "\t characters width measured in spaces
 set shiftwidth=4 "identation width measured in spaces
-set noexpandtab "expandtab: tabs are replaced by spaces*
-set autoindent "Copy ident from current line when starting a new one
+set expandtab "expandtab: tabs are replaced by spaces*
+set softtabstop=4 "tab or backspace keypress measured in spaces
+set autoindent "Copy indent from current line when starting a new one
+" indentation settings by filetype
+" tipical tabs only
+" autocmd FileType <FileType> setlocal tabstop=4 shiftwidth=4 noexpandtab autoindent
+" tipical spaces only
+" autocmd FileType <FileType> setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab autoindent
+autocmd FileType make setlocal noexpandtab
 
 " temp files
 set backupdir=~/.vim/tmp// " file copy before vim edition
 set directory=~/.vim/tmp// " unsaved changes
 set undodir=~/.vim/tmp//   " undo tree of edited files
-""""""""""""""""""""""""""""""""""
-" Plugins managed by Vundle [git@github.com:VundleVim/Vundle.vim.git]
-""""""""""""""""""""""""""""""""""
-set nocompatible
-filetype off
-
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" Vundle manages itself, required
-Plugin 'VundleVim/Vundle.vim'
-
-" My custom plugins
-Plugin 'morhetz/gruvbox' " color scheme
-Plugin 'tpope/vim-commentary' " Command to toggle comments <gc>
-" add more plugins here
-call vundle#end()
-filetype plugin indent on
-
-""""""""""""""""""""""""""""""""""
-" Theme gruvbox [github.com:morhetz/gruvbox.git]
-""""""""""""""""""""""""""""""""""
-autocmd vimenter * nested colorscheme gruvbox
-set background=dark " Setting dark mode
 """"""""""""""""""""""""""""""""""
 " Custom Mappings
 """"""""""""""""""""""""""""""""""
@@ -84,4 +92,5 @@ cnoremap ii <ESC>
 """"""""""""""""""""""""""""""""""
 augroup filetypedetect
 	au! BufRead,BufNewFile *.m,*.oct set filetype=octave
+	au! BufRead,BufNewFile *.vh set filetype=verilog
 augroup END
