@@ -38,6 +38,7 @@ set showmatch " highlight matching {[()]}
 set scrolloff=10 "always show X lines above and below cursor line
 set splitright "open new vertical splits on the right
 set splitbelow "open new horizontal splits below
+set textwidth=0 "do not wrap text after column 80 by default
 set colorcolumn=80 " color column on 80th column
 highlight ColorColumn ctermbg=0 guibg=lightgrey
 set breakindent " wrapped lines keep same indentation
