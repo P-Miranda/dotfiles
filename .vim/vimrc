@@ -97,5 +97,5 @@ cnoremap ii <ESC>
 """"""""""""""""""""""""""""""""""
 augroup filetypedetect
 	au! BufRead,BufNewFile *.m,*.oct set filetype=octave
-	au! BufRead,BufNewFile *.vh set filetype=verilog
+	au! BufRead,BufNewFile *.vh,*.sv set filetype=verilog
 augroup END
