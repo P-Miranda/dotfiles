@@ -1,4 +1,9 @@
 """"""""""""""""""""""""""""""""""
+" P-Miranda's .vimrc
+""""""""""""""""""""""""""""""""""
+" map leader key needs to be defined before <leader> mappings
+let mapleader = ' ' 
+""""""""""""""""""""""""""""""""""
 " Plugins managed by Vundle [git@github.com:VundleVim/Vundle.vim.git]
 """"""""""""""""""""""""""""""""""
 set nocompatible
@@ -59,6 +64,8 @@ set wildignorecase " ignore cases when matching commands
 " tell vim you never want to edit these files
 set wildignore+=*.~,*.swp
 set wildignore+=*.pyc,*.o,*.a,*.so
+set wildignore+=*.git/*
+
 
 " search
 set nohlsearch " no highlighting after search
