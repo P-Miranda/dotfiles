@@ -63,7 +63,9 @@ set wildignore+=*.pyc,*.o,*.a,*.so
 " search
 set nohlsearch " no highlighting after search
 set ignorecase " ignore case in search
+set smartcase " don't ignore case if there is a capitalized letter in search
 set incsearch " show search results as you type
+set path+=** " find files in all subdirectories from $PWD
 
 " tabs and spaces
 " default configuration
