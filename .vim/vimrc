@@ -1,12 +1,12 @@
 """"""""""""""""""""""""""""""""""
 " P-Miranda's .vimrc
 """"""""""""""""""""""""""""""""""
+" Note: vimrc existence already triggers nocompatible by default
 " map leader key needs to be defined before <leader> mappings
 let mapleader = ' ' 
 """"""""""""""""""""""""""""""""""
 " Plugins managed by Vundle [git@github.com:VundleVim/Vundle.vim.git]
 """"""""""""""""""""""""""""""""""
-set nocompatible
 filetype off
 
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -33,6 +33,10 @@ autocmd Filetype octave setlocal commentstring=%\ %s
 """"""""""""""""""""""""""""""""""
 " General
 """"""""""""""""""""""""""""""""""
+" Misc
+set backspace=indent,eol,start " expected backspace behaviour
+set hidden " enable switching from non-saved buffers
+
 " Appearance
 syntax on " highlight syntax
 set number " show line numbers
