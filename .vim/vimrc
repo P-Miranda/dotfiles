@@ -34,8 +34,9 @@ autocmd Filetype octave setlocal commentstring=%\ %s
 " General
 """"""""""""""""""""""""""""""""""
 " Misc
-set backspace=indent,eol,start " expected backspace behaviour
+set backspace=indent,eol,start " expected backspace behaviour with identation
 set hidden " enable switching from non-saved buffers
+set lazyredraw " don't redraw while executing macros and non-typed commands
 
 " Appearance
 syntax on " highlight syntax
@@ -77,6 +78,7 @@ set ignorecase " ignore case in search
 set smartcase " don't ignore case if there is a capitalized letter in search
 set incsearch " show search results as you type
 set path+=** " find files in all subdirectories from $PWD
+set path+=$HOME/.vim/ " add vimrc directory to path  (for quick edits)
 
 " tabs and spaces
 " default configuration
@@ -105,6 +107,10 @@ inoremap ii <ESC>
 vnoremap ii <ESC>
 " Press ii to exit command mode -> normal mode
 cnoremap ii <ESC>
+" List and switch buffers
+nnoremap <leader>b :ls<CR>:b<Space>*
+" Find file in subdirectories
+nnoremap <leader>f :find *
 """"""""""""""""""""""""""""""""""
 " Filetype Syntax Highlighting
 """"""""""""""""""""""""""""""""""
