@@ -78,7 +78,6 @@ set ignorecase " ignore case in search
 set smartcase " don't ignore case if there is a capitalized letter in search
 set incsearch " show search results as you type
 set path+=** " find files in all subdirectories from $PWD
-set path+=$HOME/.vim/ " add vimrc directory to path  (for quick edits)
 
 " tabs and spaces
 " default configuration
@@ -107,10 +106,23 @@ inoremap ii <ESC>
 vnoremap ii <ESC>
 " Press ii to exit command mode -> normal mode
 cnoremap ii <ESC>
+" Open vimrc
+nnoremap <leader>rc :e $MYVIMRC<CR>
 " List and switch buffers
 nnoremap <leader>b :ls<CR>:b<Space>*
 " Find file in subdirectories
 nnoremap <leader>f :find *
+" Y behaves like D and C
+nnoremap Y y$
+" Keep searches centered zz centers cursor line
+nnoremap n nzz
+nnoremap N Nzz
+" Moving text
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+" Better tabs: gv re-selects text automatically
+vnoremap > >gv
+vnoremap < <gv
 """"""""""""""""""""""""""""""""""
 " Filetype Syntax Highlighting
 """"""""""""""""""""""""""""""""""
