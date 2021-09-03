@@ -12,7 +12,7 @@ Setup, installation and usage from [durdn's blog post](https://www.atlassian.com
 7. Use the `dotfiles_config` repository as a normal git repository.
 
 # Installation on another machine
-1. Add the alias to the .bashrc: `echo "alias dotfiles_config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'" >> $HOME/.bashrc`
+1. Add the alias to the .bashrc: `echo "alias dotfiles_config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'" >> $HOME/.bashrc; source $HOME/.bashrc`
 2. Add the `.dotfiles` folder to `.gitignore`:`echo ".dotfiles" >> .gitignore`
 3. Clone the repository: `git clone --bare <repo ssh/url> $HOME/.dotfiles`
 4. Checkout the repository contents:`dotfiles_config checkout`
@@ -35,5 +35,5 @@ xargs -I{} mv {} .config-backup/{}
 
 # Vim Setup
 1. Initialize submodules: `dotfiles_config submodule update --init --recursive`
-2. Install Vundle Plugins: `vim´+PluginInstall +qall`
+2. Install Vundle Plugins: `vim +PluginInstall +qall`
 3. Check '.vim/README.md' for more details
