@@ -112,6 +112,8 @@ nnoremap <leader>rc :e $MYVIMRC<CR>
 nnoremap <leader>b :ls<CR>:b<Space>*
 " Find file in subdirectories
 nnoremap <leader>f :find *
+" External grep
+nnoremap <leader>gr :gr<Space>-r<Space><Space>*<Left><Left>
 " Y behaves like D and C
 nnoremap Y y$
 " Keep searches centered zz centers cursor line
