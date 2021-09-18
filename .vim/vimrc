@@ -22,6 +22,9 @@ Plugin 'tpope/vim-fugitive' " Git wrapper for vim. Prefix :G
 call vundle#end()
 filetype plugin indent on
 
+" vim-fugitive 
+" delete fugitive buffers automatically
+autocmd BufReadPost fugitive://* set bufhidden=delete
 """"""""""""""""""""""""""""""""""
 " Theme gruvbox [github.com:morhetz/gruvbox.git]
 """"""""""""""""""""""""""""""""""
