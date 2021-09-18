@@ -59,9 +59,9 @@ set breakindent " wrapped lines keep same indentation
 
 " status line
 set statusline=
+set statusline+=%{FugitiveStatusline()} " display git branch (vim-fugitive)
 set statusline+=%f " relative filepath from current working directory
 set statusline+=%m%r%w " modified, readonly, preview flags
-set statusline+=%{FugitiveStatusline()} " display git branch (vim-fugitive)
 set statusline+=%= " align items to the right after this point
 set statusline+=[%{&ff}]%y " current filetype and syntax
 set statusline+=[%p%%/%LL][%l,%c] " lines %, total lines, current line and col
