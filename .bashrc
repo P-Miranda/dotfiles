@@ -139,7 +139,7 @@ alias la='ls -A'
 alias l='ls -CF'
 
 # Dotfiles bare repository alias
-alias dotfiles_config='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
+alias dotgit='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 
 ################################################################################
 # Environment Variables
