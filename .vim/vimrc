@@ -18,6 +18,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'morhetz/gruvbox' " color scheme
 Plugin 'tpope/vim-commentary' " Command to toggle comments <gc>
 Plugin 'tpope/vim-fugitive' " Git wrapper for vim. Prefix :G
+Plugin 'tpope/vim-dispatch' " async run Make and Dispatch <command>
 " add more plugins here
 call vundle#end()
 filetype plugin indent on
@@ -25,6 +26,10 @@ filetype plugin indent on
 " vim-fugitive 
 " delete fugitive buffers automatically
 autocmd BufReadPost fugitive://* set bufhidden=delete
+" vim-dispatch
+let g:dispatch_no_maps = 1 " remove default mappings
+" see bindings for dispatch bindings
+
 """"""""""""""""""""""""""""""""""
 " Theme gruvbox [github.com:morhetz/gruvbox.git]
 """"""""""""""""""""""""""""""""""
@@ -130,6 +135,10 @@ vnoremap K :m '<-2<CR>gv=gv
 " Better tabs: gv re-selects text automatically
 vnoremap > >gv
 vnoremap < <gv
+" Vim-Dispatch Bindings
+nnoremap <leader>dm :Make<Space>
+nnoremap <leader>dd :Dispatch<Space>
+
 """"""""""""""""""""""""""""""""""
 " Filetype Syntax Highlighting
 """"""""""""""""""""""""""""""""""
