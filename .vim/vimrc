@@ -138,6 +138,13 @@ vnoremap < <gv
 " Vim-Dispatch Bindings
 nnoremap <leader>dm :Make<Space>
 nnoremap <leader>dd :Dispatch<Space>
+" Fugitive Bindings
+" open 3-way split for merge
+nnoremap <leader>gd :Gvdiffsplit!<CR>
+" choose HEAD/local/left diff
+nnoremap <leader>gdh :diffget //2<CR>
+" choose incoming/right diff
+nnoremap <leader>gdl :diffget //3<CR>
 
 """"""""""""""""""""""""""""""""""
 " Filetype Syntax Highlighting
