@@ -41,7 +41,7 @@ keymap("i", "ii", "<ESC>", opts)
 keymap("v", "ii", "<ESC>", opts)
 -- Moving text
 keymap("v", "J", ":m '>+1<CR>gv=gv", opts)
-keymap("v", "K", ":m '>-2<CR>gv=gv", opts)
+keymap("v", "K", ":m '<-2<CR>gv=gv", opts)
 -- Better tabs: gv re-selects text automatically
 keymap("v", ">", ">gv", opts)
 keymap("v", "<", "<gv", opts)
