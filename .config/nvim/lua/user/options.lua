@@ -70,7 +70,7 @@ vim.opt.wildignore:append( { "*.o", "*.a", ".so" })
 vim.opt.wildignore:append( { ".git/*" })
 
 -- Statusline
-local stat_str = "%{FugitiveStatusline()}"                           -- display git branch (vim-fugitive)
+local stat_str = "%{FugitiveStatusline()}"      -- display git branch (vim-fugitive)
 stat_str = stat_str .. "%f"                     -- relative filepath from current working directory
 stat_str = stat_str .. "%m%r%w"                 -- modified, readonly, preview flags
 stat_str = stat_str .. "%="                     -- align items to the right after this point
