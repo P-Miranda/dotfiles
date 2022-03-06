@@ -51,6 +51,13 @@ return packer.startup(function(use)
 
     use "morhetz/gruvbox"           -- Colorscheme
 
+    -- Telescope
+    use {
+        'nvim-telescope/telescope.nvim',
+        requires = { {'nvim-lua/plenary.nvim'} }
+    }
+    -- Notes: install ripgrep for live-grep support
+
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if PACKER_BOOTSTRAP then

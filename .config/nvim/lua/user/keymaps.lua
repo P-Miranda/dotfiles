@@ -52,4 +52,12 @@ keymap("v", "<", "<gv", opts)
 
 -- Command --
 -- Press ii to exit command mode
-keymap("c", "ii", "<ESC>", opts)
+keymap("c", "ii", "<esc>", opts)
+
+
+-- Telescope Mappings
+keymap("n", "<leader>ff", "<cmd>Telescope find_files<cr>", opts)    -- Find Files in $PWD
+keymap("n", "<leader>fb", "<cmd>Telescope buffers<cr>", opts)       -- Switch to other open buffers
+keymap("n", "<leader>gr", "<cmd>Telescope live_grep<cr>", opts)     -- Grep for expression in $PWD
+keymap("n", "<leader>fg", "<cmd>Telescope grep_string<cr>", opts)   -- Grep word under cursor
+keymap("n", "<leader>tt", ":Telescope ", opts)                      -- Manual Telescope command
