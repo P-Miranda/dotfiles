@@ -19,12 +19,6 @@ vim.g.maplocalleader = " "
 --   command_mode = "c",
 
 -- Normal --
--- List and switch buffers
-keymap("n", "<leader>b", ":ls<CR>:b<Space>*", opts)
--- Find file in subdirectories
-keymap("n", "<leader>f", ":find<Space>*", opts)
--- External grep
-keymap("n", "<leader>gr", ":gr<Space>-r<Space><Space>*<Left><Left>", opts)
 -- Y behaves like D and C
 keymap("n", "Y", "y$", opts)
 -- Keep searches centered << centers cursor line
@@ -34,11 +28,11 @@ keymap("n", "N", "Nzz", opts)
 
 -- Insert --
 -- Press ii to exit insert mode
-keymap("i", "ii", "<ESC>", opts)
+keymap("i", "ii", "<esc>", opts)
 
 -- Visual --
 -- Press ii to exit insert mode
-keymap("v", "ii", "<ESC>", opts)
+keymap("v", "ii", "<esc>", opts)
 -- Moving text
 keymap("v", "J", ":m '>+1<CR>gv=gv", opts)
 keymap("v", "K", ":m '<-2<CR>gv=gv", opts)

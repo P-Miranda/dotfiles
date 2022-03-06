@@ -68,8 +68,6 @@ end
 vim.opt.wildignore:append( { "*.~", "*.swp", "*pyc"})
 vim.opt.wildignore:append( { "*.o", "*.a", ".so" })
 vim.opt.wildignore:append( { ".git/*" })
--- Path
-vim.opt.path:append( { "**" } )                 -- find files in all subdirectories from $PWD
 
 -- Statusline
 local stat_str = "%{FugitiveStatusline()}"                           -- display git branch (vim-fugitive)
