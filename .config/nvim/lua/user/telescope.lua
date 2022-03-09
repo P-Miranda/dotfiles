@@ -23,6 +23,28 @@ telescope.setup{
   },
   pickers = {
     -- Default configuration for builtin pickers goes here:
+    find_files = {
+        hidden = true,
+        no_ignore = true,
+        previewer = false,
+        layout_config = {
+            width = 80,
+        },
+    },
+    grep_string = {
+        path_display = {
+            "shorten",
+        },
+        hidden = true,
+        no_ignore = true,
+    },
+    live_grep = {
+        path_display = {
+            "shorten",
+        },
+        hidden = true,
+        no_ignore = true,
+    },
   },
   extensions = {
     -- Your extension configuration goes here:
