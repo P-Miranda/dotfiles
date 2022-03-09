@@ -24,6 +24,10 @@ keymap("n", "Y", "y$", opts)
 -- Keep searches centered << centers cursor line
 keymap("n", "n", "nzz", opts)
 keymap("n", "N", "Nzz", opts)
+-- Quickfix list navegation
+keymap("n", "<C-j>", "<cmd>cnext<cr>", opts)
+keymap("n", "<C-k>", "<cmd>cprevious<cr>", opts)
+
 
 
 -- Insert --
