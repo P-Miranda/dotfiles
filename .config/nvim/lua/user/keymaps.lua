@@ -27,7 +27,8 @@ keymap("n", "N", "Nzz", opts)
 -- Quickfix list navegation
 keymap("n", "<C-j>", "<cmd>cnext<cr>", opts)
 keymap("n", "<C-k>", "<cmd>cprevious<cr>", opts)
-
+-- Change local buffer working directory to my notes
+keymap("n", "<leader>md", "<cmd>lcd ~/mdnotes<cr>", opts)
 
 
 -- Insert --
