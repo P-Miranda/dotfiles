@@ -54,8 +54,15 @@ keymap("c", "ii", "<esc>", opts)
 
 
 -- Telescope Mappings
-keymap("n", "<leader>ff", "<cmd>Telescope find_files<cr>", opts)    -- Find Files in $PWD
-keymap("n", "<leader>fb", "<cmd>Telescope buffers<cr>", opts)       -- Switch to other open buffers
-keymap("n", "<leader>gr", "<cmd>Telescope live_grep<cr>", opts)     -- Grep for expression in $PWD
-keymap("n", "<leader>fg", "<cmd>Telescope grep_string<cr>", opts)   -- Grep word under cursor
-keymap("n", "<leader>tt", ":Telescope ", opts)                      -- Manual Telescope command
+-- Find Files in $PWD
+keymap("n", "<leader>ff", "<cmd>lua require('telescope.builtin').find_files()<cr>", opts)    
+-- Switch to other open buffers
+keymap("n", "<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<cr>", opts)      
+-- Grep for expression in $PWD
+keymap("n", "<leader>gr", "<cmd>lua require('telescope.builtin').live_grep()<cr>", opts)     
+-- Grep word under cursor
+keymap("n", "<leader>fg", "<cmd>lua require('telescope.builtin').grep_string()<cr>", opts)   
+-- Manual Telescope command
+keymap("n", "<leader>tt", ":Telescope ", opts)                      
+-- Find file in nvim config
+keymap("n", "<leader>frc", "<cmd>lua require('user.telescope').find_nvim_config()<cr>", opts) 

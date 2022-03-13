@@ -11,6 +11,9 @@ telescope.setup{
     layout_config = {
       prompt_position = 'top',
     },
+    file_ignore_patterns = {
+        '.git/*',
+    },
     sorting_strategy = 'ascending',
     -- check lua/telescope/mappings.lua for default mappings
     mappings = {
@@ -60,3 +63,16 @@ telescope.setup{
 
 -- load telescope extentions
 telescope.load_extension('fzf')
+
+-- Custom telescope pickers
+local my_telescope = {}
+
+-- Find file in nvim config
+my_telescope.find_nvim_config = function() 
+    require('telescope.builtin').find_files({
+        cwd = '~/.config/nvim',
+        prompt_title = '~ nvim config ~',
+    })
+end
+
+return my_telescope
