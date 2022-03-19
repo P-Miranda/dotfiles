@@ -69,15 +69,6 @@ vim.opt.wildignore:append( { "*.~", "*.swp", "*pyc"})
 vim.opt.wildignore:append( { "*.o", "*.a", ".so" })
 vim.opt.wildignore:append( { ".git/*" })
 
--- Statusline
-local stat_str = "%{FugitiveStatusline()}"      -- display git branch (vim-fugitive)
-stat_str = stat_str .. "%f"                     -- relative filepath from current working directory
-stat_str = stat_str .. "%m%r%w"                 -- modified, readonly, preview flags
-stat_str = stat_str .. "%="                     -- align items to the right after this point
-stat_str = stat_str .. "[%{&ff}]%y"             -- current filetype and syntax
-stat_str = stat_str .. "[%p%%/%LL][%l,%c]"      -- lines %, total lines, current line and col
-vim.opt.statusline = stat_str
-vim.opt.laststatus = 2                          -- always show status bar
 
 -- vim-fugitive
 -- delete fugitive buffers automatically
