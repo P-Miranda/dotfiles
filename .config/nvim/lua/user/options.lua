@@ -7,6 +7,7 @@ local options = {
 
     -- Appearance
     number = true,                              -- show line numbers
+    relativenumber = true,                      -- show relative numbers from current line
     showcmd = true,                             -- Show partial command on bottom-right
     wrap = true,                                -- Wrap long text lines
     cursorline = true,                          -- highlight current line
@@ -50,14 +51,23 @@ vim.cmd [[
 --
 -- Filetype Syntax Highlighting
 --
-vim.cmd [[
-    au! BufRead,BufNewFile *.m,*.oct set filetype=octave
-    au! BufRead,BufNewFile *.vh,*.sv set filetype=verilog
-]]
--- set 80th column with specific color
-vim.cmd [[
-    highlight ColorColumn ctermbg=darkgrey guibg=darkgrey
-]]
+local filetype_augroup = vim.api.nvim_create_augroup("filetype_augroup", {clear = true})
+vim.api.nvim_create_autocmd(
+    {"BufRead,BufNewFile"},
+    {
+        pattern ={ '*.m' , '*.oct' },
+        command = "set filetype=octave",
+        group = filetype_augroup
+    }
+)
+vim.api.nvim_create_autocmd(
+    {"BufRead,BufNewFile"},
+    {
+        pattern ={ '*.vh', '*.sv' },
+        command = "set filetype=verilog",
+        group = filetype_augroup
+    }
+)
 
 for k, v in pairs(options) do
   vim.opt[k] = v
@@ -69,9 +79,14 @@ vim.opt.wildignore:append( { "*.~", "*.swp", "*pyc"})
 vim.opt.wildignore:append( { "*.o", "*.a", ".so" })
 vim.opt.wildignore:append( { ".git/*" })
 
-
--- vim-fugitive
--- delete fugitive buffers automatically
-vim.cmd [[
-    autocmd BufReadPost fugitive://* set bufhidden=delete
-]]
+-- Highlight yanked region 
+-- [source](https://jdhao.github.io/2020/05/22/highlight_yank_region_nvim/#neovim-only)
+local hl_yank_augroup = vim.api.nvim_create_augroup("highlight_yank", {clear = true})
+vim.api.nvim_create_autocmd(
+    {"TextYankPost"},
+    {
+        pattern = '*',
+        command = "silent! lua vim.highlight.on_yank{higroup=\"IncSearch\", timeout=300}",
+        group = hl_yank_augroup
+    }
+)

@@ -1,5 +1,10 @@
 local colorscheme = "gruvbox"
 
+-- set 80th column with specific color
+vim.cmd [[
+    highlight ColorColumn ctermbg=darkgrey guibg=darkgrey
+]]
+
 vim.cmd [[
     autocmd vimenter * nested colorscheme gruvbox
     set background=dark
