@@ -44,9 +44,10 @@ return packer.startup(function(use)
     use "wbthomason/packer.nvim"    -- Have packer manage itself
 
     -- Add new plugins here
-    use "tpope/vim-commentary"      -- Command to toggle comments <gc>
+    -- use "tpope/vim-commentary"      -- Command to toggle comments <gc>
+    use "numToStr/Comment.nvim"     -- <gc> line comments, <gb> block comments
     use "tpope/vim-fugitive"        -- Git wrapper for vim. Prefix :Git
-
+    use "tpope/vim-surround"        -- Surrounding pairs. cs"' ysiw] ysWfprint
     use "morhetz/gruvbox"           -- Colorscheme
 
     -- Telescope (plus Extentions)
@@ -63,3 +64,4 @@ return packer.startup(function(use)
         require("packer").sync()
     end
 end)
+
