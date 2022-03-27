@@ -38,6 +38,10 @@ packer.init {
     },
 }
 
+-- Plugin Configurations
+require("user.plugins.telescope")
+require("user.plugins.others")
+
 -- Install your plugins here
 return packer.startup(function(use)
     -- My plugins here
