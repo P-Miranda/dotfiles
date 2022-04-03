@@ -62,6 +62,9 @@ return packer.startup(function(use)
     }
     use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
+    -- LSP
+    use "neovim/nvim-lspconfig" -- Collection of configurations for the built-in LSP client
+
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if PACKER_BOOTSTRAP then
