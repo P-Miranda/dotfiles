@@ -48,43 +48,51 @@ end
 --
 -- set the path to the sumneko installation
 -- Note: assumes sumneko server is on $PATH
-local sumneko_binary = vim.fn.exepath('lua-language-server')
-local sumneko_root_path = vim.fn.fnamemodify(sumneko_binary, ':h:h')
+if 1 == vim.fn.executable "lua-language-server" then
+    local sumneko_binary = vim.fn.exepath('lua-language-server')
+    local sumneko_root_path = vim.fn.fnamemodify(sumneko_binary, ':h:h')
 
-lspconfig.sumneko_lua.setup({
-    cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"};
-    -- An example of settings for an LSP server.
-    --    For more options, see nvim-lspconfig
-    settings = {
-        Lua = {
-            runtime = {
-                -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-                version = 'LuaJIT',
-                -- Setup your lua path
-                path = vim.split(package.path, ';'),
-            },
-            diagnostics = {
-                -- Get the language server to recognize the `vim` global
-                globals = {'vim'},
-            },
-            workspace = {
-                -- Make the server aware of Neovim runtime files
-                library = {
-                    [vim.fn.expand('$VIMRUNTIME/lua')] = true,
-                    [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
+    lspconfig.sumneko_lua.setup({
+        cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"};
+        -- An example of settings for an LSP server.
+        --    For more options, see nvim-lspconfig
+        settings = {
+            Lua = {
+                runtime = {
+                    -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+                    version = 'LuaJIT',
+                    -- Setup your lua path
+                    path = vim.split(package.path, ';'),
                 },
-            },
-        }
-    },
-    capabilities = capabilities,
-    on_attach = on_attach
-})
+                diagnostics = {
+                    -- Get the language server to recognize the `vim` global
+                    globals = {'vim'},
+                },
+                workspace = {
+                    -- Make the server aware of Neovim runtime files
+                    library = {
+                        [vim.fn.expand('$VIMRUNTIME/lua')] = true,
+                        [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
+                    },
+                },
+            }
+        },
+        capabilities = capabilities,
+        on_attach = on_attach
+    })
+else
+    print("lua-language-server not in $PATH")
+end
 
 --
 -- Clangd
 --
-lspconfig.clangd.setup({
-    capabilities = capabilities,
-    on_attach = on_attach
-})
+if 1 == vim.fn.executable "clangd" then
+    lspconfig.clangd.setup({
+        capabilities = capabilities,
+        on_attach = on_attach
+    })
+else
+    print("clangd not in $PATH")
+end
 
