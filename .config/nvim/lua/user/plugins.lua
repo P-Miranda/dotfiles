@@ -39,6 +39,7 @@ packer.init {
 }
 
 -- Plugin Configurations
+require("user.plugins.nvim-cmp")
 require("user.plugins.telescope")
 require("user.plugins.others")
 
@@ -64,6 +65,13 @@ return packer.startup(function(use)
 
     -- LSP
     use "neovim/nvim-lspconfig" -- Collection of configurations for the built-in LSP client
+
+    -- Completion
+    use "hrsh7th/nvim-cmp"          -- Completion engine
+    use "L3MON4D3/LuaSnip"          -- Snippet engine (required for nvim-cmp)
+    use "saadparwaiz1/cmp_luasnip"  -- Snipper completion source
+    use "hrsh7th/cmp-buffer"    -- Buffer completion source
+    use "hrsh7th/cmp-nvim-lsp"  -- LSP completion source
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins

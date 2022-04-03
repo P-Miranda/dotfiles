@@ -36,6 +36,13 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_set_keymap('n', '<leader>dp', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
 end
 
+-- Add completion capabilities
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+local cmp_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+if cmp_ok then
+    capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
+end
+
 --
 -- sumneko lua
 --
@@ -69,7 +76,7 @@ lspconfig.sumneko_lua.setup({
             },
         }
     },
-
+    capabilities = capabilities,
     on_attach = on_attach
 })
 
@@ -77,6 +84,7 @@ lspconfig.sumneko_lua.setup({
 -- Clangd
 --
 lspconfig.clangd.setup({
+    capabilities = capabilities,
     on_attach = on_attach
 })
 
