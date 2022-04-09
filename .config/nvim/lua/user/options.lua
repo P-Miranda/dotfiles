@@ -7,7 +7,7 @@ local options = {
 
     -- Appearance
     number = true,                              -- show line numbers
-    relativenumber = true,                      -- show relative numbers from current line
+    relativenumber = false,                      -- show relative numbers from current line
     showcmd = true,                             -- Show partial command on bottom-right
     wrap = true,                                -- Wrap long text lines
     cursorline = true,                          -- highlight current line

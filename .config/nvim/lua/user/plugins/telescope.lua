@@ -13,6 +13,7 @@ telescope.setup{
     },
     file_ignore_patterns = {
         '.git/*',
+        '.cache/clangd/*',
     },
     sorting_strategy = 'ascending',
     -- check lua/telescope/mappings.lua for default mappings
