@@ -48,3 +48,65 @@ make distclean
 rm -rf $HOME/opt/neovim
 rm -rf .local/share/nvim
 ```
+
+## Install from Tarball
+- Create and move to folder:
+```
+mkdir -p ~/opt
+cd ~/opt
+```
+- Download and extract tarball (nightly link):
+```
+wget https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.tar.gz
+tar xzvf nvim-linux64.gz
+```
+- Add to `$PATH` in `~/.bashrc`:
+```Bash
+PATH=$HOME/opt/nvim-linux64/bin:$PATH
+```
+
+- **Note**: to uninstall just remove the files in `~/opt/nvim-linux64*`:
+```
+rm -rf ~/opt/nvim-linux64*
+rm -rf $HOME/.local/share/nvim
+```
+
+## Setup external dependencies
+- Quick guide:
+```
+sudo apt update;
+sudo install xsel ripgrep
+```
+- Overall check with: `:checkhealth`
+- Clipboard (see `:help clipboard`): install `xsel` (or similar)
+- Ripgrep for telescope (see `:checkhealth Telescope`)
+
+### LSP Setups
+#### Sumneko Lua (Lua)
+- Follow instructions from [Sumneko Lua Repository](https://github.com/sumneko/lua-language-server/wiki/Build-and-Run)
+
+- Add to $PATH:
+```bash
+export PATH=$HOME/src_repos/lua-language-server/bin:$PATH
+```
+#### Clangd LSP Server (C/C++)
+
+1. [Instructions Page](https://clangd.llvm.org/installation.html)
+
+2. [Download Standalone .zip Relase](https://github.com/clangd/clangd/releases/tag/13.0.0)
+
+3. Unzip folder and copy to ~/opt/:
+```
+cp -r ~/Downloads/clangd_13.0.0 ~/opt/
+```
+
+4. Add to path:
+```
+export PATH=$HOME/opt/clangd_13.0.0/bin:$PATH
+```
+
+5. Install [Bear](https://github.com/rizsotto/Bear)
+- I could not install from source (some problems with dependencies)
+- So I installed from the package manager some older version
+
+6. Generate compile_sources.json with:` bear <make command>`
