@@ -1,7 +1,5 @@
 local opts = { noremap = true, silent = true }
 
-local term_opts = { silent = true }
-
 -- Shorten function name
 local keymap = vim.api.nvim_set_keymap
 
@@ -29,6 +27,11 @@ keymap("n", "<C-j>", "<cmd>cnext<cr>", opts)
 keymap("n", "<C-k>", "<cmd>cprevious<cr>", opts)
 -- Change local buffer working directory to my notes
 keymap("n", "<leader>md", "<cmd>lcd ~/mdnotes<cr>", opts)
+-- Resize windows
+keymap("n", "<S-Up>", "<cmd>resize +2<cr>", opts)
+keymap("n", "<S-Down>", "<cmd>resize -2<cr>", opts)
+keymap("n", "<S-Left>", "<cmd>vertical resize -2<cr>", opts)
+keymap("n", "<S-Right>", "<cmd>vertical resize +2<cr>", opts)
 
 
 -- Insert --
@@ -56,22 +59,22 @@ keymap("c", "ii", "<esc>", opts)
 
 -- Telescope Mappings
 -- Find Files in $PWD
-keymap("n", "<leader>ff", "<cmd>lua require('telescope.builtin').find_files()<cr>", opts)    
+keymap("n", "<leader>ff", "<cmd>lua require('telescope.builtin').find_files()<cr>", opts)
 -- Switch to other open buffers
-keymap("n", "<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<cr>", opts)      
+keymap("n", "<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<cr>", opts)
 -- Grep for expression in $PWD
-keymap("n", "<leader>gr", "<cmd>lua require('telescope.builtin').live_grep()<cr>", opts)     
+keymap("n", "<leader>gr", "<cmd>lua require('telescope.builtin').live_grep()<cr>", opts)
 -- Grep word under cursor
-keymap("n", "<leader>fg", "<cmd>lua require('telescope.builtin').grep_string()<cr>", opts)   
+keymap("n", "<leader>fg", "<cmd>lua require('telescope.builtin').grep_string()<cr>", opts)
 -- Manual Telescope command
-keymap("n", "<leader>tt", ":Telescope ", opts)                      
+keymap("n", "<leader>tt", ":Telescope ", opts)
 -- Find file in nvim config
-keymap("n", "<leader>frc", "<cmd>lua require('user.plugins.telescope').find_nvim_config()<cr>", opts) 
+keymap("n", "<leader>frc", "<cmd>lua require('user.plugins.telescope').find_nvim_config()<cr>", opts)
 
 -- Fugitive Mappings
 -- Open 3-way split for merge conflicts
-keymap("n", "<leader>gds", "<cmd>Gvdiffsplit!<cr>", opts) 
+keymap("n", "<leader>gds", "<cmd>Gvdiffsplit!<cr>]c", opts)
 -- Choose HEAD/local/left diff
-keymap("n", "<leader>gdh", "<cmd>diffget //2<cr>", opts) 
+keymap("n", "<leader>gdh", "<cmd>diffget //2<cr>]c", opts)
 -- Choose incomming/right diff
-keymap("n", "<leader>gdl", "<cmd>diffget //3<cr>", opts) 
+keymap("n", "<leader>gdl", "<cmd>diffget //3<cr>]c", opts)

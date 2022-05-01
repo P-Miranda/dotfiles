@@ -89,6 +89,10 @@ end
 --
 if 1 == vim.fn.executable "clangd" then
     lspconfig.clangd.setup({
+        cmd = {
+            "clangd",
+            "--clang-tidy"
+        },
         capabilities = capabilities,
         on_attach = on_attach
     })

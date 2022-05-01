@@ -20,7 +20,6 @@ telescope.setup{
     mappings = {
       i = {
       },
-      
       n = {
       },
     }
@@ -69,7 +68,7 @@ telescope.load_extension('fzf')
 local my_telescope = {}
 
 -- Find file in nvim config
-my_telescope.find_nvim_config = function() 
+my_telescope.find_nvim_config = function()
     require('telescope.builtin').find_files({
         cwd = '~/.config/nvim',
         prompt_title = '~ nvim config ~',
