@@ -227,3 +227,7 @@ mode "$mode_system" {
     bindsym Escape mode "default"
 }
 bindsym $mod+control+l mode "$mode_system"
+
+# Startup Configurations
+exec --no-startup-id $HOME/.config/i3/scripts/mouse_settings.sh
+exec --no-startup-id redshift
