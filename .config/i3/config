@@ -183,22 +183,23 @@ bar {
 # Terminal $ws1
 # Main Browser
 assign [class="firefox"] $ws2
+# Email / Utils
+assign [class="Thunderbird"] $ws8
 # Chats
-assign [class="Thunderbird"] $ws9
 assign [class="Brave-browser"] $ws9
 assign [class="discord"] $ws9
 assign [class="Signal"] $ws9
 # special cases for special applications (check documentation)
-for_window [class="Spotify"] move to workspace $ws10
 for_window [class="Google-chrome"] move to workspace $ws3
+for_window [class="Spotify"] move to workspace $ws10
 
 # Assign workspaces to specific screens
 workspace 1 output DP-0
 workspace 2 output DVI-0
 workspace 3 output DVI-0
+workspace 8 output DVI-0
 workspace 9 output DVI-0
 workspace 10 output DVI-0
-
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -209,7 +210,6 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 
 # Set xrandr settings (screen)
 exec_always /home/pmiranda/.screenlayout/desktop_layout.sh 
-
 
 # System power options mode
 # Lock Screen
