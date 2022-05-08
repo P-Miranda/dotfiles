@@ -6,14 +6,7 @@ end
 --
 -- Customize UI
 --
--- How info, hints, warnings and errors are displayed
-vim.diagnostic.config({
-    underline = true,
-    virtual_text = true,
-    signs = false,
-    update_in_insert = true,
-    severity_sort = false,
-})
+-- see vim.diagnostic.config
 
 -- lsp setups
 require("user.lsp.setups")

@@ -27,13 +27,7 @@ local on_attach = function(client, bufnr)
   -- Code actions
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>fm', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 
-  -- Diagnostics
--- See `:help vim.diagnostic.*` for documentation on any of the below functions
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>dt', "<cmd>lua require('telescope.builtin').diagnostics()<CR>", opts)
-  vim.api.nvim_set_keymap('n', '<leader>dn', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
-  vim.api.nvim_set_keymap('n', '<leader>dp', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
 end
 
 -- Add completion capabilities

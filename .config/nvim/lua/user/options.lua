@@ -75,11 +75,11 @@ end
 
 -- Append to default configurations
 -- Wildignore
-vim.opt.wildignore:append( { "*.~", "*.swp", "*pyc"})
-vim.opt.wildignore:append( { "*.o", "*.a", ".so" })
-vim.opt.wildignore:append( { ".git/*" })
+vim.opt.wildignore:append({ "*.~", "*.swp", "*pyc"})
+vim.opt.wildignore:append({ "*.o", "*.a", ".so" })
+vim.opt.wildignore:append({ ".git/*" })
 
--- Highlight yanked region 
+-- Highlight yanked region
 -- [source](https://jdhao.github.io/2020/05/22/highlight_yank_region_nvim/#neovim-only)
 local hl_yank_augroup = vim.api.nvim_create_augroup("highlight_yank", {clear = true})
 vim.api.nvim_create_autocmd(
@@ -90,3 +90,12 @@ vim.api.nvim_create_autocmd(
         group = hl_yank_augroup
     }
 )
+
+-- How info, hints, warnings and errors are displayed
+vim.diagnostic.config({
+    underline = true,
+    virtual_text = true,
+    signs = false,
+    update_in_insert = true,
+    severity_sort = false,
+})

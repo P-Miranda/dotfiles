@@ -41,6 +41,7 @@ packer.init {
 -- Plugin Configurations
 require("user.plugins.nvim-cmp")
 require("user.plugins.telescope")
+require("user.plugins.formatter")
 require("user.plugins.others")
 
 -- Install your plugins here
@@ -72,6 +73,9 @@ return packer.startup(function(use)
     use "saadparwaiz1/cmp_luasnip"  -- Snipper completion source
     use "hrsh7th/cmp-buffer"    -- Buffer completion source
     use "hrsh7th/cmp-nvim-lsp"  -- LSP completion source
+
+    -- Formatting
+    use "mhartington/formatter.nvim"-- Format runner
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins

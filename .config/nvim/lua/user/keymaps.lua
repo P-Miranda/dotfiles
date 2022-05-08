@@ -32,6 +32,11 @@ keymap("n", "<S-Up>", "<cmd>resize +2<cr>", opts)
 keymap("n", "<S-Down>", "<cmd>resize -2<cr>", opts)
 keymap("n", "<S-Left>", "<cmd>vertical resize -2<cr>", opts)
 keymap("n", "<S-Right>", "<cmd>vertical resize +2<cr>", opts)
+-- Diagnostics
+-- See `:help vim.diagnostic.*` for documentation on any of the below functions
+vim.api.nvim_set_keymap('n', '<leader>dt', "<cmd>lua require('telescope.builtin').diagnostics()<CR>", opts)
+vim.api.nvim_set_keymap('n', '<leader>dn', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
+vim.api.nvim_set_keymap('n', '<leader>dp', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
 
 
 -- Insert --
