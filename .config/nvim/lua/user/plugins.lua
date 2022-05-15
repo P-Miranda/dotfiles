@@ -42,6 +42,7 @@ packer.init {
 require("user.plugins.nvim-cmp")
 require("user.plugins.telescope")
 require("user.plugins.formatter")
+require("user.plugins.nvim-lint")
 require("user.plugins.others")
 
 -- Install your plugins here
@@ -50,7 +51,6 @@ return packer.startup(function(use)
     use "wbthomason/packer.nvim"    -- Have packer manage itself
 
     -- Add new plugins here
-    -- use "tpope/vim-commentary"      -- Command to toggle comments <gc>
     use "numToStr/Comment.nvim"     -- <gc> line comments, <gb> block comments
     use "tpope/vim-fugitive"        -- Git wrapper for vim. Prefix :Git
     use "tpope/vim-surround"        -- Surrounding pairs. cs"' ysiw] ysWfprint
@@ -65,17 +65,18 @@ return packer.startup(function(use)
     use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
     -- LSP
-    use "neovim/nvim-lspconfig" -- Collection of configurations for the built-in LSP client
+    use "neovim/nvim-lspconfig"     -- Collection of configurations for the built-in LSP client
 
     -- Completion
     use "hrsh7th/nvim-cmp"          -- Completion engine
     use "L3MON4D3/LuaSnip"          -- Snippet engine (required for nvim-cmp)
     use "saadparwaiz1/cmp_luasnip"  -- Snipper completion source
-    use "hrsh7th/cmp-buffer"    -- Buffer completion source
-    use "hrsh7th/cmp-nvim-lsp"  -- LSP completion source
+    use "hrsh7th/cmp-buffer"        -- Buffer completion source
+    use "hrsh7th/cmp-nvim-lsp"      -- LSP completion source
 
-    -- Formatting
+    -- Formatting / Linting
     use "mhartington/formatter.nvim"-- Format runner
+    use "mfussenegger/nvim-lint"    -- Async Linter (uses vim.diagnostic)
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
