@@ -167,6 +167,15 @@ if [ -f $HOME/.bash_local ]; then
 fi
 
 ################################################################################
+# Custom Tools
+################################################################################
+
+# Pyenv (manage multiple python versions)
+export PYENV_ROOT="$HOME/opt/pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+################################################################################
 # Custom Shell Functions
 ################################################################################
 
