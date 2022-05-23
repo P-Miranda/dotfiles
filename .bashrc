@@ -151,6 +151,12 @@ alias dotgit='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 #export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0
 #export LIBGL_ALWAYS_INDIRECT=1
 
+# load environment variables based on current directory
+# requires direnv
+if command -v direnv &> /dev/null; then
+    eval "$(direnv hook bash)"
+fi
+
 ################################################################################
 # Local Bash Configurations (not synchronized to dotfiles)
 ################################################################################
@@ -159,3 +165,28 @@ alias dotgit='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 if [ -f $HOME/.bash_local ]; then
 	source $HOME/.bash_local
 fi
+
+################################################################################
+# Custom Shell Functions
+################################################################################
+
+# Activate python virtual environment
+# ve [no args]: try default venv paths
+# ve [arg1]: source virtual environment in [arg1]
+function ve() {
+    default_venvs=(".venv" "venv" ".env" "env")
+    if [ $# -eq 0 ]; then
+        for vdir in "${default_venvs[@]}"; do
+            if [ -d "$vdir" ]; then
+                source $vdir/bin/activate
+                return
+            fi
+        done
+    elif [ "$1" = "iob" ]; then
+        source $HOME/Documents/Work/.venv/bin/activate
+    else
+        source $1/bin/activate
+    fi
+}
+export -f ve
+
