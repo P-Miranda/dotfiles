@@ -211,7 +211,7 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 bindsym Print exec xfce4-screenshooter
 
 # Set xrandr settings (screen)
-exec_always /home/pmiranda/.screenlayout/desktop_layout.sh 
+exec_always ~/.screenlayout/desktop_layout.sh 
 
 # System power options mode
 # Lock Screen
@@ -231,5 +231,5 @@ mode "$mode_system" {
 bindsym $mod+control+l mode "$mode_system"
 
 # Startup Configurations
-exec --no-startup-id $HOME/.config/i3/scripts/mouse_settings.sh
+exec --no-startup-id ~/.config/i3/scripts/mouse_settings.sh
 exec --no-startup-id redshift
