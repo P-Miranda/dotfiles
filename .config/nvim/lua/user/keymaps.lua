@@ -74,7 +74,7 @@ keymap("n", "<leader>fr", "<cmd>lua require('telescope.builtin').grep_string()<c
 -- Manual Telescope command
 keymap("n", "<leader>tt", ":Telescope ", opts)
 -- Find file in nvim config
-keymap("n", "<leader>frc", "<cmd>lua require('user.plugins.telescope').find_nvim_config()<cr>", opts)
+keymap("n", "<leader>fc", "<cmd>lua require('user.plugins.telescope').find_nvim_config()<cr>", opts)
 
 -- Fugitive Mappings
 -- Open 3-way split for merge conflicts

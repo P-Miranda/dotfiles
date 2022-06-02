@@ -14,6 +14,8 @@ telescope.setup{
     file_ignore_patterns = {
         '.git/*',
         '.cache/clangd/*',
+        'venv/*',
+        '.venv/*',
     },
     sorting_strategy = 'ascending',
     -- check lua/telescope/mappings.lua for default mappings
