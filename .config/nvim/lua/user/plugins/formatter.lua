@@ -11,7 +11,6 @@ formatter.setup({
             require("formatter.filetypes.python").black,
         },
         c = {
-            -- Pick config from default
             require("formatter.filetypes.c").clangformat,
         }
     }
