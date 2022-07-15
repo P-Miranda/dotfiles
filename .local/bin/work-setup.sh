@@ -7,4 +7,4 @@ thunderbird &
 firefox &
 google-chrome &
 libreoffice &
-./kpsxc-setup.sh
+~/.local/bin/kpsxc-setup.sh
