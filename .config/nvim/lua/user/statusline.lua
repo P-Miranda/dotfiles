@@ -21,7 +21,7 @@ local stl = function(color)
         "%m%r%w",
         "%=",
         color('Filetype'),
-        "[%{&ff}]%y",             
+        "[%{&ff}]%y",
         color('LineCol'),
         "[%p%%/%LL][%l,%c]",
     },

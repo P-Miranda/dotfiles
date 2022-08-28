@@ -1,7 +1,7 @@
 local options = {
     -- Misc
     backspace = { "indent", "eol", "start" },   -- expected backspace behaviour with indentation
-    hidden = true,                              -- enable switching from non-saved buffers 
+    hidden = true,                              -- enable switching from non-saved buffers
     lazyredraw = true,                          -- don't redraw while executing macros and non-typed commands
     clipboard = "unnamedplus",                  -- neovim can access system clipboard
 
@@ -18,7 +18,7 @@ local options = {
     textwidth = 0,                              -- do not wrap text after column 80 by default
     colorcolumn = "80",                         -- color column on 80th column
     breakindent = true,                         -- wrapped lines keep same indentation
-    termguicolors = true,                       -- set term gui colors (most terminal support this) 
+    termguicolors = true,                       -- set term gui colors (most terminal support this)
 
     -- Command Completion
     wildmenu = true,                            -- show vim command completion options
@@ -37,7 +37,7 @@ local options = {
     expandtab = true,                           -- expandtab: tabs are replaced by spaces*
     softtabstop = 4,                            -- tab or backspace keypress measured in spaces
     autoindent = true                           -- Copy indent from current line when starting a new one
-    
+
 }
 
 --

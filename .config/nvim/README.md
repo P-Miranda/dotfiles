@@ -75,7 +75,7 @@ rm -rf $HOME/.local/share/nvim
 - Quick guide:
 ```
 sudo apt update;
-sudo install xsel ripgrep
+sudo install xsel ripgrep fd-find
 ```
 - Overall check with: `:checkhealth`
 - Clipboard (see `:help clipboard`): install `xsel` (or similar)
@@ -109,4 +109,4 @@ export PATH=$HOME/opt/clangd_13.0.0/bin:$PATH
 - I could not install from source (some problems with dependencies)
 - So I installed from the package manager some older version
 
-6. Generate compile_sources.json with:` bear <make command>`
+6. Generate `compile_commands.json` with:` bear <make command>`
