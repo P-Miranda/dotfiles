@@ -5,7 +5,7 @@
 # when you log in.
 ############################################
 
-# source .bashrc if exists
-if [ -f $HOME/.bashrc ]; then
-	source $HOME/.bashrc
+# source .profile if exists
+if [ -f $HOME/.profile ]; then
+	source $HOME/.profile
 fi
