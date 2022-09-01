@@ -75,7 +75,7 @@ if 1 == vim.fn.executable "lua-language-server" then
         on_attach = on_attach
     })
 else
-    print("lua-language-server not in $PATH")
+    -- print("lua-language-server not in $PATH")
 end
 
 --
@@ -91,6 +91,6 @@ if 1 == vim.fn.executable "clangd" then
         on_attach = on_attach
     })
 else
-    print("clangd not in $PATH")
+    -- print("clangd not in $PATH")
 end
 

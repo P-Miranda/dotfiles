@@ -12,21 +12,31 @@ formatter.setup({
         },
         c = {
             require("formatter.filetypes.c").clangformat,
-        }
+        },
+        cpp = {
+            require("formatter.filetypes.c").clangformat,
+        },
+        -- verilog = {
+        --     function()
+        --         return {
+        --             exe = "verible-verilog-format",
+        --             args = {'--indentation_spaces 4', vim.fn.fnameescape(vim.api.nvim_buf_get_name(0))},
+        --             stdin = true
+        --         }
+        --     end
+        -- },
+        -- systemverilog = {
+        --     function()
+        --         return {
+        --             exe = "verible-verilog-format",
+        --             args = {'--indentation_spaces 4', vim.fn.fnameescape(vim.api.nvim_buf_get_name(0))},
+        --             stdin = true
+        --         }
+        --     end
+        -- }
     }
 })
 
 -- Manual Format command
 local opts = { noremap = true, silent = true }
 vim.api.nvim_set_keymap("n", "<leader>fm", "<cmd>Format<cr>", opts)
-
--- -- Format and write after save asynchronously
--- local formatter_augroup = vim.api.nvim_create_augroup("formatter", {clear = true})
--- vim.api.nvim_create_autocmd(
---     {"BufWritePost"},
---     {
---         pattern = '*',
---         command = "silent! FormatWrite",
---         group = formatter_augroup
---     }
--- )
