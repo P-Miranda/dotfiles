@@ -1,4 +1,4 @@
-#!/usrc/bin/env bash
+#!/usr/bin/env bash
 # refresh dmenu cache
 # script based on /usrc/bin/dmenu_path
 cachedir=${XDG_CACHE_HOME:-"$HOME/.cache"}
