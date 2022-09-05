@@ -9,7 +9,7 @@ lint.linters_by_ft = {
 
 -- Manual Lint command
 local opts = { noremap = true, silent = true }
-vim.api.nvim_set_keymap("n", "<leader>lt", "lua require('lint').try_lint()", opts)
+vim.api.nvim_set_keymap("n", "<leader>lt", "<cmd>lua require('lint').try_lint()<CR>", opts)
 
 -- Lint after save asynchronously
 -- local lint_augroup = vim.api.nvim_create_augroup("nvim-lint", {clear = true})
