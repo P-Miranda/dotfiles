@@ -19,9 +19,14 @@ vim.g.maplocalleader = " "
 -- Normal --
 -- Y behaves like D and C
 keymap("n", "Y", "y$", opts)
--- Keep searches centered << centers cursor line
+-- Keep searches centered zz centers cursor line
 keymap("n", "n", "nzz", opts)
 keymap("n", "N", "Nzz", opts)
+-- Center Page Down/Up
+keymap("n", "<C-u>", "<C-u>zz", opts)
+keymap("n", "<C-d>", "<C-d>zz", opts)
+-- Replace word under cursor (credit ThePrimeagen)
+keymap("n", "<leader>rw", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>", opts)
 -- Quickfix list navegation
 keymap("n", "<C-j>", "<cmd>cnext<cr>", opts)
 keymap("n", "<C-k>", "<cmd>cprevious<cr>", opts)
@@ -37,7 +42,6 @@ keymap("n", "<S-Right>", "<cmd>vertical resize +2<cr>", opts)
 vim.api.nvim_set_keymap('n', '<leader>dt', "<cmd>lua require('telescope.builtin').diagnostics()<CR>", opts)
 vim.api.nvim_set_keymap('n', '<leader>dn', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
 vim.api.nvim_set_keymap('n', '<leader>dp', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
-
 
 -- Insert --
 -- Press ii to exit insert mode
@@ -60,7 +64,6 @@ keymap("v", "<", "<gv", opts)
 -- Command --
 -- Press ii to exit command mode
 keymap("c", "ii", "<esc>", opts)
-
 
 -- Telescope Mappings
 -- Find Files in $PWD
