@@ -74,8 +74,6 @@ if 1 == vim.fn.executable "lua-language-server" then
         capabilities = capabilities,
         on_attach = on_attach
     })
-else
-    -- print("lua-language-server not in $PATH")
 end
 
 --
@@ -90,7 +88,4 @@ if 1 == vim.fn.executable "clangd" then
         capabilities = capabilities,
         on_attach = on_attach
     })
-else
-    -- print("clangd not in $PATH")
 end
-

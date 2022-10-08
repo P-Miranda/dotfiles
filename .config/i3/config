@@ -184,7 +184,7 @@ bar {
 # Main Browser
 assign [class="firefox"] $ws2
 # Email / Utils
-assign [class="Thunderbird"] $ws8
+assign [class="thunderbird"] $ws8
 # KeePassXC: keep manual for (Alt+k) windows. See ~/.local/bin/kpsxc-setup.sh
 # Chats
 assign [class="Brave-browser"] $ws9
