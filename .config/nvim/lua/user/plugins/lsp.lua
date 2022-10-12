@@ -3,6 +3,11 @@ if not status_ok then
     return
 end
 
+--
+-- Customize UI
+--
+-- see vim.diagnostic.config
+
 local opts = { noremap=true, silent=true }
 
 -- Use an on_attach function to only map the following keys
