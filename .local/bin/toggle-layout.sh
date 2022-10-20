@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # dmenu script to toggle between keyboard layouts
-options="setxkbmap -layout pt
+options="setxkbmap -layout pt -option
 setxkbmap -layout us -variant intl"
 
 set_kb_cmd=`echo -e "$options" |\
