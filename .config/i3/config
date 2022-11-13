@@ -26,10 +26,6 @@ font pango:monospace 12
 # screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork 
 
-# NetworkManager is the most popular way to manage wireless networks on Linux,
-# and nm-applet is a desktop environment-independent system tray GUI for it.
-exec --no-startup-id nm-applet
-
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
@@ -78,6 +74,8 @@ bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
+# fullscreen spanning all monitors
+bindsym $mod+g fullscreen toggle global
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+q layout stacking
@@ -233,4 +231,7 @@ bindsym $mod+control+l mode "$mode_system"
 
 # Startup Configurations
 exec --no-startup-id ~/.config/i3/scripts/mouse_settings.sh
+exec --no-startup-id nm-applet
 exec --no-startup-id redshift
+exec --no-startup-id volumeicon
+exec --no-startup-id blueman-tray
