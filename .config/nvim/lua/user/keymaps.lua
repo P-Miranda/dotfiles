@@ -37,6 +37,9 @@ keymap("n", "<leader>md", "<cmd>lcd ~/mdnotes<cr>", opts)
 vim.api.nvim_set_keymap('n', '<leader>dt', "<cmd>lua require('telescope.builtin').diagnostics()<CR>", opts)
 vim.api.nvim_set_keymap('n', '<leader>dn', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
 vim.api.nvim_set_keymap('n', '<leader>dp', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
+vim.api.nvim_set_keymap('n', '<leader>dh', '<cmd>lua vim.diagnostic.hide()<CR>', opts)
+-- Date
+keymap("n", "<leader>td", '<cmd>r! date +\\%d/\\%m/\\%Y<CR>', opts)
 
 -- Insert --
 -- Press ii to exit insert mode

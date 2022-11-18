@@ -98,8 +98,7 @@ esac
 ################################################################################
 # Vi Mode
 ################################################################################
-set -o vi
-bind '"ii":vi-movement-mode'
+# set -o vi
 
 ################################################################################
 
@@ -151,7 +150,11 @@ alias dotgit='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 ################################################################################
 # Environment Variables
 ################################################################################
-
+# Use ibus as input method for all programs
+GTK_IM_MODULE=ibus
+QT_IM_MODULE=ibus
+XCOMPOSEFILE=$HOME/.XCompose
+XMODIFIERS=@im=ibus
 
 # enable GUI access to Ubuntu - for WLS2
 # source: https://medium.com/@japheth.yates/the-complete-wsl2-gui-setup-2582828f4577
