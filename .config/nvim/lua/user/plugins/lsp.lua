@@ -1,3 +1,13 @@
+local status_mason, mason = pcall(require, "mason")
+if not status_mason then
+    return
+end
+
+local status_mason_lspconfig, mason_lspconfig = pcall(require, "mason-lspconfig")
+if not status_mason_lspconfig then
+    return
+end
+
 local status_ok, lspconfig = pcall(require, "lspconfig")
 if not status_ok then
     return
@@ -8,11 +18,11 @@ end
 --
 -- see vim.diagnostic.config
 
-local opts = { noremap=true, silent=true }
-
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
+  local opts = { noremap=true, silent=true }
+
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
@@ -42,55 +52,95 @@ if cmp_ok then
     capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
 end
 
---
--- luals
---
--- set the path to the lua_ls installation
--- Note: assumes lua_ls server is on $PATH
-if 1 == vim.fn.executable "lua-language-server" then
-    local lua_ls_binary = vim.fn.exepath('lua-language-server')
-    local lua_ls_root_path = vim.fn.fnamemodify(lua_ls_binary, ':h:h')
-
-    lspconfig.lua_ls.setup({
-        cmd = {lua_ls_binary, "-E", lua_ls_root_path .. "/main.lua"};
-        -- An example of settings for an LSP server.
-        --    For more options, see nvim-lspconfig
-        settings = {
+local servers = {
+    clangd = {},
+    lua_ls = {
             Lua = {
-                runtime = {
-                    -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-                    version = 'LuaJIT',
-                    -- Setup your lua path
-                    path = vim.split(package.path, ';'),
-                },
-                diagnostics = {
-                    -- Get the language server to recognize the `vim` global
-                    globals = {'vim'},
-                },
-                workspace = {
-                    -- Make the server aware of Neovim runtime files
-                    library = {
-                        [vim.fn.expand('$VIMRUNTIME/lua')] = true,
-                        [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
-                    },
-                },
-            }
-        },
-        capabilities = capabilities,
-        on_attach = on_attach
-    })
-end
+              runtime = {
+                -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+                version = 'LuaJIT',
+              },
+              diagnostics = {
+                -- Get the language server to recognize the `vim` global
+                globals = {'vim'},
+              },
+              workspace = {
+                -- Make the server aware of Neovim runtime files
+                library = vim.api.nvim_get_runtime_file("", true),
+              },
+              -- Do not send telemetry data containing a randomized but unique identifier
+              telemetry = {
+                enable = false,
+              },
+            },
+    }
+}
 
+-- manage external tools (install Language Servers, Debug Servers, Linters, etc)
+mason.setup()
+
+mason_lspconfig.setup({
+    ensure_installed = vim.tbl_keys(servers)
+})
+
+mason_lspconfig.setup_handlers {
+    function(server_name)
+        require('lspconfig')[server_name].setup {
+            capabilities = capabilities,
+            on_attach = on_attach,
+            settings = servers[server_name],
+        }
+    end,
+}
+
+-- --
+-- -- luals
+-- --
+-- -- set the path to the lua_ls installation
+-- -- Note: assumes lua_ls server is on $PATH
+-- if 1 == vim.fn.executable "lua-language-server" then
+--     local lua_ls_binary = vim.fn.exepath('lua-language-server')
+--     local lua_ls_root_path = vim.fn.fnamemodify(lua_ls_binary, ':h:h')
 --
--- Clangd
+--     lspconfig.lua_ls.setup({
+--         cmd = {lua_ls_binary, "-E", lua_ls_root_path .. "/main.lua"};
+--         -- An example of settings for an LSP server.
+--         --    For more options, see nvim-lspconfig
+--         settings = {
+--             Lua = {
+--               runtime = {
+--                 -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+--                 version = 'LuaJIT',
+--               },
+--               diagnostics = {
+--                 -- Get the language server to recognize the `vim` global
+--                 globals = {'vim'},
+--               },
+--               workspace = {
+--                 -- Make the server aware of Neovim runtime files
+--                 library = vim.api.nvim_get_runtime_file("", true),
+--               },
+--               -- Do not send telemetry data containing a randomized but unique identifier
+--               telemetry = {
+--                 enable = false,
+--               },
+--             },
+--         },
+--         capabilities = capabilities,
+--         on_attach = on_attach
+--     })
+-- end
 --
-if 1 == vim.fn.executable "clangd" then
-    lspconfig.clangd.setup({
-        cmd = {
-            "clangd",
-            "--clang-tidy"
-        },
-        capabilities = capabilities,
-        on_attach = on_attach
-    })
-end
+-- --
+-- -- Clangd
+-- --
+-- if 1 == vim.fn.executable "clangd" then
+--     lspconfig.clangd.setup({
+--         cmd = {
+--             "clangd",
+--             "--clang-tidy"
+--         },
+--         capabilities = capabilities,
+--         on_attach = on_attach
+--     })
+-- end
