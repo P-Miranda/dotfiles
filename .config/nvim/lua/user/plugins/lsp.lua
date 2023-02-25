@@ -43,16 +43,16 @@ if cmp_ok then
 end
 
 --
--- sumneko lua
+-- luals
 --
--- set the path to the sumneko installation
--- Note: assumes sumneko server is on $PATH
+-- set the path to the lua_ls installation
+-- Note: assumes lua_ls server is on $PATH
 if 1 == vim.fn.executable "lua-language-server" then
-    local sumneko_binary = vim.fn.exepath('lua-language-server')
-    local sumneko_root_path = vim.fn.fnamemodify(sumneko_binary, ':h:h')
+    local lua_ls_binary = vim.fn.exepath('lua-language-server')
+    local lua_ls_root_path = vim.fn.fnamemodify(lua_ls_binary, ':h:h')
 
-    lspconfig.sumneko_lua.setup({
-        cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"};
+    lspconfig.lua_ls.setup({
+        cmd = {lua_ls_binary, "-E", lua_ls_root_path .. "/main.lua"};
         -- An example of settings for an LSP server.
         --    For more options, see nvim-lspconfig
         settings = {

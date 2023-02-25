@@ -43,11 +43,11 @@ keymap("n", "<leader>td", '<cmd>r! date +\\%d/\\%m/\\%Y<CR>', opts)
 
 -- Insert --
 -- Press ii to exit insert mode
-keymap("i", "ii", "<esc>", opts)
+-- keymap("i", "ii", "<esc>", opts)
 
 -- Visual --
 -- Press ii to exit insert mode
-keymap("v", "ii", "<esc>", opts)
+-- keymap("v", "ii", "<esc>", opts)
 -- Moving text
 keymap("v", "J", ":m '>+1<CR>gv=gv", opts)
 keymap("v", "K", ":m '<-2<CR>gv=gv", opts)
@@ -61,7 +61,7 @@ keymap("v", "<", "<gv", opts)
 
 -- Command --
 -- Press ii to exit command mode
-keymap("c", "ii", "<esc>", opts)
+-- keymap("c", "ii", "<esc>", opts)
 
 -- Telescope Mappings
 -- Find Files in $PWD
