@@ -28,6 +28,7 @@ cmp.setup({
     sources = cmp.config.sources({
         { name = 'nvim_lsp' },
         { name = 'luasnip' },
+        { name = 'copilot' },
         { name = 'buffer', keyword_length = 5 },
     }),
     formatting = {
@@ -36,6 +37,7 @@ cmp.setup({
                 buffer = "[Buffer]",
                 nvim_lsp = "[LSP]",
                 luasnip = "[LuaSnip]",
+                copilot = "[Copilot]",
             })[entry.source.name]
             return vim_item
         end
