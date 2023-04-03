@@ -90,7 +90,11 @@ return packer.startup(function(use)
         },
         config = "require('user.plugins.nvim-cmp')",
     }          -- Completion engine
-    use "L3MON4D3/LuaSnip"          -- Snippet engine (required for nvim-cmp)
+    -- Snippet engine (required for nvim-cmp)
+    use {
+        "L3MON4D3/LuaSnip",
+        config = "require('user.plugins.luasnip')",
+    }
 
     -- Formatting / Linting
     use {

@@ -34,8 +34,8 @@ cmp.setup({
     formatting = {
         format = function(entry, vim_item)
             vim_item.menu = ({
-                buffer = "[Buffer]",
                 nvim_lsp = "[LSP]",
+                buffer = "[Buffer]",
                 luasnip = "[LuaSnip]",
                 copilot = "[Copilot]",
             })[entry.source.name]
