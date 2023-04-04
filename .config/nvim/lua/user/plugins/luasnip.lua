@@ -8,6 +8,9 @@ ls.config.set_config({
     updateevents = "TextChanged,TextChangedI",
 })
 
+-- load snippets from friendly snippets
+require("luasnip.loaders.from_vscode").load()
+
 -- keymaps
 -- expand or jump to next completion
 vim.keymap.set({ "i", "s" }, "<C-j>", function()

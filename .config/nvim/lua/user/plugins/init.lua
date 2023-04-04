@@ -95,6 +95,7 @@ return packer.startup(function(use)
         "L3MON4D3/LuaSnip",
         config = "require('user.plugins.luasnip')",
     }
+    use "rafamadriz/friendly-snippets"
 
     -- Formatting / Linting
     use {
