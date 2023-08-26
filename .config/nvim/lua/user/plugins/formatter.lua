@@ -19,6 +19,19 @@ my_formatters.clangformat = function()
   }
 end
 
+my_formatters.veribleformat = function()
+    local util = require("formatter.util")
+    return {
+        exe = "verible-verilog-format",
+        args = {
+            "--inplace",
+            util.escape_path(util.get_current_buffer_file_path()),
+        },
+        stdin = false,
+        try_node_modules = true,
+    }
+end
+
 formatter.setup({
     filetype = {
         python = {
@@ -33,6 +46,9 @@ formatter.setup({
             -- require("formatter.filetypes.c").clangformat,
             my_formatters.clangformat,
         },
+        verilog = {
+            my_formatters.veribleformat,
+        }
     }
 })
 

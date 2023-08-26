@@ -46,7 +46,7 @@ vim.api.nvim_create_autocmd(
 vim.api.nvim_create_autocmd(
     {"BufRead,BufNewFile"},
     {
-        pattern ={ '*.vh', '*.sv' },
+        pattern ={ '*.v', '*.vh', '*.sv', '*.vs', '*.vt' },
         command = "set filetype=verilog",
         group = filetype_augroup
     }

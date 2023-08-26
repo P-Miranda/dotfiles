@@ -13,6 +13,8 @@ if status_ok then
             bash = true,
             sh = true,
             lua = true,
+            latex = true,
+            tex = true,
             ["*"] = false, -- disable for all other filetypes by default
         }
     })
