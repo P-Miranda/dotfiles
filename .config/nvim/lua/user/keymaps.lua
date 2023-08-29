@@ -32,6 +32,8 @@ keymap("n", "<C-j>", "<cmd>cnext<cr>", opts)
 keymap("n", "<C-k>", "<cmd>cprevious<cr>", opts)
 -- Change local buffer working directory to my notes
 keymap("n", "<leader>md", "<cmd>lcd ~/mdnotes<cr>", opts)
+-- Undo History
+keymap("n", "<leader>ut", "<cmd>UndotreeToggle<cr>", opts)
 -- Diagnostics
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 vim.api.nvim_set_keymap('n', '<leader>dt', "<cmd>lua require('telescope.builtin').diagnostics()<CR>", opts)

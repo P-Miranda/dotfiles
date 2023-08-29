@@ -14,32 +14,15 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- -- Autocommand that reloads neovim whenever you save the plugins/init.lua file
--- vim.cmd [[
---     augroup packer_user_config
---         autocmd!
---         autocmd BufWritePost ~/.config/nvim/lua/user/plugins/init.lua source <afile> | PackerSync
---     augroup end
--- ]]
-
 -- Install your plugins here
 return require('lazy').setup({
     -- My plugins here
 
     -- Add new plugins here
-    -- <gc> line comments, <gb> block comments
-    {
-        "numToStr/Comment.nvim",
-        -- main = require('user.plugins.comment'),
-    },
-
-    -- Git wrapper for vim. Prefix :Git
-    {
-        "tpope/vim-fugitive",
-        -- main = require('user.plugins.vim-fugitive'),
-    },
-
-    "tpope/vim-surround",        -- Surrounding pairs. cs"' ysiw] ysWfprint
+    "numToStr/Comment.nvim", -- <gc> line comments, <gb> block comments
+    "tpope/vim-fugitive",    -- Git wrapper for vim. Prefix :Git
+    "tpope/vim-surround",    -- Surrounding pairs. cs"' ysiw] ysWfprint
+    "mbbill/undotree",       -- Undo History :UndoTreeToggle
 
     -- Telescope (plus Extentions)
     -- Notes: install ripgrep and fd for live-grep support
@@ -50,7 +33,6 @@ return require('lazy').setup({
     {
         'nvim-telescope/telescope-fzf-native.nvim',
         build = 'make',
-        -- main = require('user.plugins.telescope'),
     },
 
     -- LSP
@@ -60,7 +42,6 @@ return require('lazy').setup({
             'williamboman/mason.nvim',
             'williamboman/mason-lspconfig.nvim',
         },
-        -- main = require('user.plugins.lsp'),
     },
 
     -- Completion
@@ -71,24 +52,14 @@ return require('lazy').setup({
             { "hrsh7th/cmp-buffer" },        -- Buffer completion source
             { "hrsh7th/cmp-nvim-lsp" },      -- LSP completion source
         },
-        -- main = require('user.plugins.nvim-cmp'),
     },          -- Completion engine
     -- Snippet engine (required for nvim-cmp)
-    {
-        "L3MON4D3/LuaSnip",
-        -- main = require('user.plugins.luasnip'),
-    },
+    "L3MON4D3/LuaSnip",
     "rafamadriz/friendly-snippets",
 
     -- Formatting / Linting
-    {
-        "mhartington/formatter.nvim",
-        -- main = require('user.plugins.formatter'),
-    },
-    {
-        "mfussenegger/nvim-lint",
-        -- main = require('user.plugins.nvim-lint'),
-    },
+    "mhartington/formatter.nvim",
+    "mfussenegger/nvim-lint",
 
     -- Treesitter
     {
@@ -96,14 +67,12 @@ return require('lazy').setup({
         build = function() require('nvim-treesitter.install').update({
                 with_sync = true
             }) end,
-        -- main = require('user.plugins.treesitter'),
     },
 
     -- Colorscheme
     {
         "ellisonleao/gruvbox.nvim",
         lazy = false,
-        -- main = require('user.plugins.colorscheme'),
     },
 
     -- Copilot
@@ -111,14 +80,10 @@ return require('lazy').setup({
         "zbirenbaum/copilot.lua",
         cmd = "Copilot",
         event = "InsertEnter",
-        -- main = require('user.plugins.copilot'),
     },
     {
         "zbirenbaum/copilot-cmp",
         dependencies = { "copilot.lua" },
-        -- main = function ()
-        --     require("copilot_cmp").setup()
-        -- end
     },
 
 })
