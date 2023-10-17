@@ -36,7 +36,7 @@ local options = {
 --
 local filetype_augroup = vim.api.nvim_create_augroup("filetype_augroup", {clear = true})
 vim.api.nvim_create_autocmd(
-    {"BufRead,BufNewFile"},
+    {"BufRead","BufNewFile"},
     {
         pattern ={ '*.m' , '*.oct' },
         command = "set filetype=octave",
@@ -44,7 +44,7 @@ vim.api.nvim_create_autocmd(
     }
 )
 vim.api.nvim_create_autocmd(
-    {"BufRead,BufNewFile"},
+    {"BufRead","BufNewFile"},
     {
         pattern ={ '*.v', '*.vh', '*.sv', '*.vs', '*.vt' },
         command = "set filetype=verilog",
