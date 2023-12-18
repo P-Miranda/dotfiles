@@ -18,32 +18,31 @@ end
 --
 -- see vim.diagnostic.config
 
--- Use an on_attach function to only map the following keys
+-- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
-local on_attach = function(client, bufnr)
-  local opts = { noremap=true, silent=true }
+vim.api.nvim_create_autocmd('LspAttach', {
+  group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+  callback = function(ev)
+    -- Enable completion triggered by <c-x><c-o>
+    vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
 
-  -- Enable completion triggered by <c-x><c-o>
-  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-
-  -- Mappings.
-  -- See `:help vim.lsp.*` for documentation on any of the below functions
-  -- Info
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-h>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-
-  -- Movements
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', "<cmd>lua require('telescope.builtin').lsp_references()<CR>", opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gs', "<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>", opts)
-
-  -- Code actions
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-
-end
+    -- Buffer local mappings.
+    -- See `:help vim.lsp.*` for documentation on any of the below functions
+    local opts = { buffer = ev.buf }
+    -- Info
+    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+    vim.keymap.set('n', '<C-h>', vim.lsp.buf.signature_help, opts)
+    -- Movements
+    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+    vim.keymap.set('n', 'gr', "<cmd>lua require('telescope.builtin').lsp_references()<CR>", opts)
+    vim.keymap.set('n', 'gs', "<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>", opts)
+    -- Code actions
+    vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
+    vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
+  end,
+})
 
 -- Add completion capabilities
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -73,7 +72,20 @@ local servers = {
                 enable = false,
               },
             },
-    }
+    },
+    pylsp = {
+        pylsp = {
+            plugins = {
+                flake8 = {
+                    enabled = false, -- used by nvim-lint
+                },
+                pycodestyle = {
+                    ignore = { "E501" }, -- line length
+                    maxLineLength = 88, -- same as black
+                },
+            },
+        },
+    },
 }
 
 -- manage external tools (install Language Servers, Debug Servers, Linters, etc)
@@ -87,60 +99,7 @@ mason_lspconfig.setup_handlers {
     function(server_name)
         require('lspconfig')[server_name].setup {
             capabilities = capabilities,
-            on_attach = on_attach,
             settings = servers[server_name],
         }
     end,
 }
-
--- --
--- -- luals
--- --
--- -- set the path to the lua_ls installation
--- -- Note: assumes lua_ls server is on $PATH
--- if 1 == vim.fn.executable "lua-language-server" then
---     local lua_ls_binary = vim.fn.exepath('lua-language-server')
---     local lua_ls_root_path = vim.fn.fnamemodify(lua_ls_binary, ':h:h')
---
---     lspconfig.lua_ls.setup({
---         cmd = {lua_ls_binary, "-E", lua_ls_root_path .. "/main.lua"};
---         -- An example of settings for an LSP server.
---         --    For more options, see nvim-lspconfig
---         settings = {
---             Lua = {
---               runtime = {
---                 -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
---                 version = 'LuaJIT',
---               },
---               diagnostics = {
---                 -- Get the language server to recognize the `vim` global
---                 globals = {'vim'},
---               },
---               workspace = {
---                 -- Make the server aware of Neovim runtime files
---                 library = vim.api.nvim_get_runtime_file("", true),
---               },
---               -- Do not send telemetry data containing a randomized but unique identifier
---               telemetry = {
---                 enable = false,
---               },
---             },
---         },
---         capabilities = capabilities,
---         on_attach = on_attach
---     })
--- end
---
--- --
--- -- Clangd
--- --
--- if 1 == vim.fn.executable "clangd" then
---     lspconfig.clangd.setup({
---         cmd = {
---             "clangd",
---             "--clang-tidy"
---         },
---         capabilities = capabilities,
---         on_attach = on_attach
---     })
--- end

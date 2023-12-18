@@ -3,8 +3,17 @@ if not status_ok then
     return
 end
 
+local flake8 = lint.linters.flake8
+flake8.args = {
+    '--format=%(path)s:%(row)d:%(col)d:%(code)s:%(text)s',
+    '--no-show-source',
+    '--max-line-length=88',
+    '-',
+}
+
 lint.linters_by_ft = {
-    python = {'flake8',},
+    python = {'flake8'},
+    yaml = {'yamllint'},
 }
 
 -- Manual Lint command
