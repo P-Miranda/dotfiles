@@ -233,6 +233,7 @@ bindsym $mod+control+l mode "$mode_system"
 # check: https://www.reddit.com/r/i3wm/comments/4wqwcf/comment/d6loavq/ 
 exec --no-startup-id compton
 # Startup Configurations
+exec --no-startup-id feh --bg-fill --no-xinerama ~/.config/i3/wallpaper/w0.png
 exec --no-startup-id ~/.config/i3/scripts/mouse_settings.sh
 exec --no-startup-id nm-applet
 exec --no-startup-id redshift

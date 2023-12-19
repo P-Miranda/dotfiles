@@ -20,7 +20,7 @@ git checkout nightly
 ```
 - Install dependencies (confirm repository documentation for specific dependencies):
 ```
-sudo apt install ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip curl doxygen
+sudo apt install ninja-build gettext cmake unzip curl
 ```
 - Compile and prepare installation in `$HOME/opt/neovim`:
 ```
@@ -75,13 +75,17 @@ rm -rf $HOME/.local/share/nvim
 - Quick guide:
 ```
 sudo apt update;
-sudo install xsel ripgrep fd-find
+sudo install xsel ripgrep fd-find python3-venv
 ```
 - Overall check with: `:checkhealth`
 - Clipboard (see `:help clipboard`): install `xsel` (or similar)
 - Ripgrep for telescope (see `:checkhealth Telescope`)
+- Python3-venv for Python LSP
 
-### LSP Setups
+- Install Node.js (for Copilot)
+
+### LSP Setups (Old)
+Note: LSP Setups are managed via Mason plugins.
 #### Sumneko Lua (Lua)
 - Follow instructions from [Sumneko Lua Repository](https://github.com/sumneko/lua-language-server/wiki/Build-and-Run)
 
