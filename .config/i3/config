@@ -181,6 +181,7 @@ bar {
 # Terminal $ws1
 # Main Browser
 assign [class="firefox"] $ws2
+assign [class="Firefox-esr"] $ws2
 # Email / Utils
 assign [class="thunderbird"] $ws8
 # KeePassXC: keep manual for (Alt+k) windows. See ~/.local/bin/kpsxc-setup.sh

@@ -6,5 +6,5 @@
 thunderbird &
 firefox &
 google-chrome &
-libreoffice ~/Documents/Work/E-Factor.ods &
+libreoffice ~/Documents/Work/Focus_Work.ods &
 ~/.local/bin/kpsxc-setup.sh

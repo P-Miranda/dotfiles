@@ -12,7 +12,7 @@ flake8.args = {
 }
 
 lint.linters_by_ft = {
-    python = {'flake8'},
+    python = {'flake8', 'mypy'},
     yaml = {'yamllint'},
 }
 

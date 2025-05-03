@@ -21,7 +21,7 @@ function usage () {
 if [[ $# -lt 1 ]] ; then
     usage
 elif [[ $1 = "-home" ]] ; then
-    rsync -auP --exclude=@Recycle $NAS_DIR $BACKUP_DIR
+    rsync -auP --exclude=@Recycle --exclude=Backups/linux_mint_home $NAS_DIR $BACKUP_DIR
     echo "NAS Home backup complete"
 elif [[ $1 = "-notes" ]] ; then
     NAS_NOTES_DIR="${NAS_DIR}mdnotes/"
