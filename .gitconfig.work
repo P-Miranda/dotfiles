@@ -1,0 +1,22 @@
+# vim: set filetype=gitconfig :
+# =====================
+# Work specific configs
+# =====================
+
+[user]
+    name = P-Miranda
+    email = pmiranda.iobundle@gmail.com
+
+# implement this fix:
+# https://stackoverflow.com/questions/50282837/using-ssh-vs-https-with-github-submodules/50299434#50299434
+# git repository configures submodules URLs as https
+# each developer configures git to use ssh instead of https
+[url "git@github.com:"]
+    insteadOf = https://github.com/
+
+[url "git@gitlab.com:"]
+    insteadOf = https://gitlab.com/
+
+[url "git@bitbucket.org:"]
+    insteadOf = https://bitbucket.org/
+
