@@ -1,5 +1,5 @@
 [core]
 	editor = nvim
 
-[includeif "gitdir:~/Documents/Work"]
-    path = ~/.gitconfig.work
+[includeif "gitdir:~/Documents/Work/"]
+    path = .gitconfig.work
