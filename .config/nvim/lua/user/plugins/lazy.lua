@@ -19,29 +19,29 @@ return require('lazy').setup({
     -- My plugins here
 
     -- Add new plugins here
-    "numToStr/Comment.nvim", -- <gc> line comments, <gb> block comments
-    "mbbill/undotree",       -- Undo History :UndoTreeToggle
+    -- "numToStr/Comment.nvim", -- <gc> line comments, <gb> block comments
+    -- "mbbill/undotree",       -- Undo History :UndoTreeToggle
+    --
+    -- {                        -- Collection of various small independent plugins/modules
+    --     'echasnovski/mini.nvim',
+    --     config = function()
+    --         require('mini.ai').setup { n_lines = 500 } -- around/inside objects
+    --         require('mini.surround').setup()           -- Surround pairs. sd' sr)'
+    --     end,
+    -- },
 
-    {                        -- Collection of various small independent plugins/modules
-        'echasnovski/mini.nvim',
-        config = function()
-            require('mini.ai').setup { n_lines = 500 } -- around/inside objects
-            require('mini.surround').setup()           -- Surround pairs. sd' sr)'
-        end,
-    },
-
-    { -- Adds git related signs to the gutter, :Gitsigns <command>
-        'lewis6991/gitsigns.nvim',
-        opts = {
-            signs = {
-                add = { text = '+' },
-                change = { text = '~' },
-                delete = { text = '_' },
-                topdelete = { text = '‾' },
-                changedelete = { text = '~' },
-            },
-        },
-    },
+    -- { -- Adds git related signs to the gutter, :Gitsigns <command>
+    --     'lewis6991/gitsigns.nvim',
+    --     opts = {
+    --         signs = {
+    --             add = { text = '+' },
+    --             change = { text = '~' },
+    --             delete = { text = '_' },
+    --             topdelete = { text = '‾' },
+    --             changedelete = { text = '~' },
+    --         },
+    --     },
+    -- },
 
     -- Telescope (plus Extentions)
     -- Notes: install ripgrep and fd for live-grep support
@@ -138,7 +138,7 @@ return require('lazy').setup({
             },
         },
     },
-    "mfussenegger/nvim-lint",
+    -- "mfussenegger/nvim-lint",
 
     -- Treesitter
     {
@@ -167,10 +167,10 @@ return require('lazy').setup({
     },
 
     -- Colorscheme
-    {
-        "ellisonleao/gruvbox.nvim",
-        lazy = false,
-    },
+    -- {
+    --     "ellisonleao/gruvbox.nvim",
+    --     lazy = false,
+    -- },
 
     -- Copilot
     {

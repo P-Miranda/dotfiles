@@ -1,0 +1,28 @@
+{
+  "plugins": {
+    "Comment.nvim": {
+      "rev": "e30b7f2",
+      "src": "https://github.com/numToStr/Comment.nvim"
+    },
+    "gitsigns.nvim": {
+      "rev": "1ee5c1f",
+      "src": "https://github.com/lewis6991/gitsigns.nvim"
+    },
+    "gruvbox.nvim": {
+      "rev": "5e0a460",
+      "src": "https://github.com/ellisonleao/gruvbox.nvim"
+    },
+    "mini.nvim": {
+      "rev": "6a224dd",
+      "src": "https://github.com/echasnovski/mini.nvim"
+    },
+    "nvim-lint": {
+      "rev": "9da1fb9",
+      "src": "https://github.com/mfussenegger/nvim-lint"
+    },
+    "undotree": {
+      "rev": "0f1c981",
+      "src": "https://github.com/mbbill/undotree"
+    }
+  }
+}
