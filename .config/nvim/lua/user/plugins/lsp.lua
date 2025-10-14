@@ -21,7 +21,7 @@ end
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
 vim.api.nvim_create_autocmd('LspAttach', {
-  group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+  group = vim.api.nvim_create_augroup('UserLspConfig', {clear = true}),
   callback = function(ev)
     -- Enable completion triggered by <c-x><c-o>
     vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
@@ -34,10 +34,10 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', '<C-h>', vim.lsp.buf.signature_help, opts)
     -- Movements
     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
-    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
-    vim.keymap.set('n', 'gr', "<cmd>lua require('telescope.builtin').lsp_references()<CR>", opts)
-    vim.keymap.set('n', 'gs', "<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>", opts)
+    vim.keymap.set('n', 'gd', require('telescope.builtin').lsp_definitions, opts)
+    vim.keymap.set('n', 'gi', require('telescope.builtin').lsp_implementations, opts)
+    vim.keymap.set('n', 'gr', require('telescope.builtin').lsp_references, opts)
+    vim.keymap.set('n', 'gs', require('telescope.builtin').lsp_document_symbols, opts)
     -- Code actions
     vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
     vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
@@ -45,11 +45,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 
 -- Add completion capabilities
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-local cmp_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-if cmp_ok then
-    capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
-end
+local capabilities = require('blink.cmp').get_lsp_capabilities()
 
 local servers = {
     clangd = {},
@@ -95,11 +91,12 @@ mason_lspconfig.setup({
     ensure_installed = vim.tbl_keys(servers)
 })
 
-mason_lspconfig.setup_handlers {
-    function(server_name)
-        require('lspconfig')[server_name].setup {
-            capabilities = capabilities,
-            settings = servers[server_name],
-        }
-    end,
+mason_lspconfig.setup {
+    handlers = {
+        function(server_name)
+            local server = servers[server_name] or {}
+            server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
+            require('lspconfig')[server_name].setup(server)
+        end,
+    }
 }

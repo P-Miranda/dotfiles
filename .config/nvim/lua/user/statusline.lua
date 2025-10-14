@@ -15,7 +15,7 @@ local stl = function(color)
         color('Mode'),
         vim.api.nvim_get_mode().mode:upper(),
         color('Git'),
-        "%{FugitiveStatusline()}",
+        -- "%{FugitiveStatusline()}",
         color('Filename'),
         "%f",
         "%m%r%w",

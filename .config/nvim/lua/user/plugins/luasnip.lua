@@ -32,6 +32,3 @@ vim.keymap.set({ "i", "s" }, "<C-l>", function()
         ls.change_choice(1)
     end
 end)
-
-
-

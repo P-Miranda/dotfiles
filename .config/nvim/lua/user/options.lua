@@ -13,6 +13,7 @@ local options = {
     colorcolumn = "80",                         -- color column on 80th column
     breakindent = true,                         -- wrapped lines keep same indentation
     termguicolors = true,                       -- set term gui colors (most terminal support this)
+    signcolumn = "yes",                         -- always show signcolumn to avoid text shifting
 
     -- Command Completion
     wildmode = { "longest:full", "full" },      -- choose longest matching option first
@@ -58,15 +59,22 @@ end
 
 -- Highlight yanked region
 -- [source](https://jdhao.github.io/2020/05/22/highlight_yank_region_nvim/#neovim-only)
-local hl_yank_augroup = vim.api.nvim_create_augroup("highlight_yank", {clear = true})
-vim.api.nvim_create_autocmd(
-    {"TextYankPost"},
-    {
-        pattern = '*',
-        command = "silent! lua vim.highlight.on_yank{higroup=\"IncSearch\", timeout=80}",
-        group = hl_yank_augroup
-    }
-)
+-- local hl_yank_augroup = vim.api.nvim_create_augroup("highlight_yank", {clear = true})
+-- vim.api.nvim_create_autocmd(
+--     {"TextYankPost"},
+--     {
+--         pattern = '*',
+--         command = "silent! lua vim.highlight.on_yank{higroup=\"IncSearch\", timeout=80}",
+--         group = hl_yank_augroup
+--     }
+-- )
+vim.api.nvim_create_autocmd('TextYankPost', {
+    desc = 'Highlight yanked text',
+    group = vim.api.nvim_create_augroup('highlight_yank', {clear = true}),
+    callback = function()
+        vim.hl.on_yank()
+    end,
+})
 
 -- How info, hints, warnings and errors are displayed
 vim.diagnostic.config({

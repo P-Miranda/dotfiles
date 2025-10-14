@@ -36,10 +36,10 @@ keymap("n", "<leader>md", "<cmd>lcd ~/mdnotes<cr>", opts)
 keymap("n", "<leader>ut", "<cmd>UndotreeToggle<cr>", opts)
 -- Diagnostics
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-vim.api.nvim_set_keymap('n', '<leader>dt', "<cmd>lua require('telescope.builtin').diagnostics()<CR>", opts)
-vim.api.nvim_set_keymap('n', '<leader>dn', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
-vim.api.nvim_set_keymap('n', '<leader>dp', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
-vim.api.nvim_set_keymap('n', '<leader>dh', '<cmd>lua vim.diagnostic.hide()<CR>', opts)
+vim.api.nvim_set_keymap('n', '<leader>dt', "<cmd>lua require('telescope.builtin').diagnostics()<cr>", opts)
+vim.api.nvim_set_keymap('n', '<leader>dn', "<cmd>lua vim.diagnostic.jump()<cr>", opts)
+vim.api.nvim_set_keymap('n', '<leader>dp', "<cmd>lua vim.diagnostic.goto_prev()<cr>", opts)
+vim.api.nvim_set_keymap('n', '<leader>dh', "<cmd>lua vim.diagnostic.hide()<cr>", opts)
 -- Date
 keymap("n", "<leader>td", '<cmd>r! date +\\%d/\\%m/\\%Y<CR>', opts)
 
